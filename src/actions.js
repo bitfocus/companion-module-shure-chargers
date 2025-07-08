@@ -7,7 +7,6 @@ import { Fields, Regex } from './setup.js'
  * @since 1.0.0
  */
 export function updateActions() {
-
 	let actions = {}
 
 	actions['set_storage_mode'] = {
@@ -24,7 +23,7 @@ export function updateActions() {
 		name: 'Flash Device',
 		options: [],
 		callback: async () => {
-				this.sendCommand(`SET FLASH ON`)
+			this.sendCommand(`SET FLASH ON`)
 		},
 	}
 	actions['set_device_name'] = {

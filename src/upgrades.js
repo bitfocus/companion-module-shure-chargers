@@ -1,2 +1,1 @@
-export const BooleanFeedbackUpgradeMap = {
-}
+export const BooleanFeedbackUpgradeMap = {}

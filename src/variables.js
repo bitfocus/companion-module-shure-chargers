@@ -1,4 +1,4 @@
-import {Models} from "./setup.js";
+import { Models } from './setup.js'
 
 /**
  * INTERNAL: initialize variables.
@@ -9,22 +9,23 @@ import {Models} from "./setup.js";
 export function updateVariables() {
 	let variables = []
 
-	if(!this.model.modular) {
+	if (!this.model.modular) {
 		this.log('debug', 'Charger is not modular, setting variables for single module')
 		variables.push({ variableId: `module_1_type`, name: `Module 1 Type` })
 		variables.push({ variableId: `module_2_type`, name: `Module 2 Type` })
 		variables.push({ variableId: `module_3_type`, name: `Module 3 Type` })
 		variables.push({ variableId: `module_4_type`, name: `Module 4 Type` })
-
 	}
 
-	const moduleCount = this.model.modular ? Models[this.config.modelID].bays* this.config.moduleCount : Models[this.config.modelID].bays
+	const moduleCount = this.model.modular
+		? Models[this.config.modelID].bays * this.config.moduleCount
+		: Models[this.config.modelID].bays
 
 	for (let i = 1; i <= moduleCount; i++) {
 		let prefix = `bay_${i}`
-		variables.push({ variableId: `${prefix}_time_to_full`, name: `Time To Full Bay ${i}`})
-		variables.push({ variableId: `${prefix}_time_to_full_string`, name: `Time To Full as String Bay ${i}`})
-		variables.push({ variableId: `${prefix}_detected`, name: `Battery in bay ${i} detected`})
+		variables.push({ variableId: `${prefix}_time_to_full`, name: `Time To Full Bay ${i}` })
+		variables.push({ variableId: `${prefix}_time_to_full_string`, name: `Time To Full as String Bay ${i}` })
+		variables.push({ variableId: `${prefix}_detected`, name: `Battery in bay ${i} detected` })
 		variables.push({ variableId: `${prefix}_state`, name: `Bay ${i} State` })
 		variables.push({ variableId: `${prefix}_cycle_count`, name: `Battery Cycles bay ${i}` })
 		variables.push({ variableId: `${prefix}_charge`, name: `Battery charge in % bay ${i}` })

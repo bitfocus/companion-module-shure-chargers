@@ -1,5 +1,5 @@
 import { combineRgb } from '@companion-module/base'
-import {BayError, BAYState} from './setup.js'
+import { BayError, BAYState } from './setup.js'
 
 /**
  * INTERNAL: initialize feedbacks.
@@ -11,7 +11,6 @@ export function updateFeedbacks() {
 	// feedbacks
 	let feedbacks = {}
 
-
 	feedbacks['storage_mode'] = {
 		type: 'boolean',
 		name: 'Storage Mode',
@@ -22,7 +21,7 @@ export function updateFeedbacks() {
 		},
 		options: [],
 		callback: ({}) => {
-			return this.api.getCharger().storage_mode;
+			return this.api.getCharger().storage_mode
 		},
 	}
 
@@ -36,8 +35,7 @@ export function updateFeedbacks() {
 		},
 		options: [],
 		callback: ({ options }) => {
-			return !!this.api.getBay(options.bay).flash;
-
+			return !!this.api.getBay(options.bay).flash
 		},
 	}
 
@@ -51,8 +49,7 @@ export function updateFeedbacks() {
 		},
 		options: [CreateBayChoices(this.model, this.config)],
 		callback: ({ options }) => {
-			return !!this.api.getBay(options.bay).detected;
-
+			return !!this.api.getBay(options.bay).detected
 		},
 	}
 
@@ -66,8 +63,7 @@ export function updateFeedbacks() {
 		},
 		options: [CreateBayChoices(this.model, this.config), CreateBayStateChoices()],
 		callback: ({ options }) => {
-			return this.api.getBay(options.bay).state === options.state;
-
+			return this.api.getBay(options.bay).state === options.state
 		},
 	}
 
@@ -81,8 +77,7 @@ export function updateFeedbacks() {
 		},
 		options: [CreateBayChoices(this.model, this.config), CreateBayErrorChoices()],
 		callback: ({ options }) => {
-			return this.api.getBay(options.bay).error === BayError[options.error];
-
+			return this.api.getBay(options.bay).error === BayError[options.error]
 		},
 	}
 
@@ -99,12 +94,9 @@ export function updateFeedbacks() {
 			if (this.api.getBay(options.bay).charge >= Number.parseInt(options.charge) && options.chargeGreater) {
 				return true
 			}
-			return this.api.getBay(options.bay).charge === Number.parseInt(options.charge) && !options.chargeGreater;
-
+			return this.api.getBay(options.bay).charge === Number.parseInt(options.charge) && !options.chargeGreater
 		},
 	}
-
-
 
 	this.setFeedbackDefinitions(feedbacks)
 }
@@ -118,7 +110,6 @@ function CreateBayChargeInputGreater() {
 }
 
 function CreateBayChargeInput() {
-
 	return {
 		type: 'textinput',
 		label: 'Charge',
@@ -129,14 +120,12 @@ function CreateBayChargeInput() {
 }
 
 function CreateBayStateChoices() {
-
 	let choices = []
-	Object.keys(BAYState).forEach(state => {
+	Object.keys(BAYState).forEach((state) => {
 		choices.push({ id: state.toString(), label: state.toString() })
 	})
 
-
-	return  {
+	return {
 		type: 'dropdown',
 		label: 'State',
 		id: 'state',
@@ -146,26 +135,23 @@ function CreateBayStateChoices() {
 }
 
 function CreateBayErrorChoices() {
-
 	let choices = []
-	Object.keys(BayError).forEach(state => {
+	Object.keys(BayError).forEach((state) => {
 		choices.push({ id: state.toString(), label: BayError[state] })
 	})
-
 
 	return {
 		type: 'dropdown',
 		label: 'Error',
 		id: 'error',
-		default: "255",
+		default: '255',
 		choices: choices,
 	}
 }
 
 function CreateBayChoices(model, config) {
-
 	let choices = []
-	const moduleCount = model.modular ? model.bays* config.moduleCount : model.bays
+	const moduleCount = model.modular ? model.bays * config.moduleCount : model.bays
 	for (let i = 1; i <= moduleCount; i++) {
 		choices.push({ id: i, label: `Bay ${i}` })
 	}

@@ -11,7 +11,7 @@ import { updateFeedbacks } from './feedback.js'
 import { updateVariables } from './variables.js'
 import WirelessApi from './internalAPI.js'
 import { BooleanFeedbackUpgradeMap } from './upgrades.js'
-import {Choices, Models} from './setup.js'
+import { Choices, Models } from './setup.js'
 
 /**
  * Companion instance class for the Shure Wireless Microphones.
@@ -46,13 +46,12 @@ class ShureWirelessInstance extends InstanceBase {
 	async configUpdated(config) {
 		let resetConnection = false
 
-		this.log('debug', 'configUpdated');
+		this.log('debug', 'configUpdated')
 		this.log('debug', `Config: ${JSON.stringify(config)}`)
 
 		if (this.config.host !== config.host) {
 			resetConnection = true
 		}
-
 
 		this.config = config
 
@@ -61,7 +60,6 @@ class ShureWirelessInstance extends InstanceBase {
 		} else {
 			this.log('debug', `Shure Model: ${this.config.modelID} NOT FOUND`)
 		}
-
 
 		this.updateActions()
 		this.updateFeedbacks()
@@ -159,7 +157,7 @@ class ShureWirelessInstance extends InstanceBase {
 				choices: Choices.ModuleCount,
 				default: 1,
 				isVisible: (options) => options['modelID'] !== 'sbrc',
-			}
+			},
 		]
 	}
 
@@ -287,9 +285,9 @@ class ShureWirelessInstance extends InstanceBase {
 					this.api.updateCharger(commandArr[0], joinData(commandArr, 1))
 				} else {
 					//this command is about a specific bay
-					if(commandArr[1] === 'BATT_MODULE_TYPE') {
+					if (commandArr[1] === 'BATT_MODULE_TYPE') {
 						this.api.updateModule(commandNum, commandArr[1], joinData(commandArr, 2))
-					}else {
+					} else {
 						this.api.updateBay(commandNum, commandArr[1], joinData(commandArr, 2))
 					}
 				}
@@ -327,7 +325,6 @@ class ShureWirelessInstance extends InstanceBase {
 			this.CHOICES_BAYS_A.push({ id: '0', label: 'All Bays' })
 		}
 
-
 		for (let i = 1; i <= 8; i++) {
 			let data = `Bay ${i}`
 
@@ -337,7 +334,6 @@ class ShureWirelessInstance extends InstanceBase {
 
 			this.CHOICES_BAYS.push({ id: i, label: data })
 			this.CHOICES_BAYS_A.push({ id: i, label: data })
-
 		}
 
 		this.BAYS_FIELD.choices = this.CHOICES_BAYS

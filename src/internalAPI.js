@@ -1,4 +1,4 @@
-import {BayError, BAYState, ModuleType} from "./setup.js";
+import { BayError, BAYState, ModuleType } from './setup.js'
 
 /**
  * Companion instance API class for Shure SBRC.
@@ -20,12 +20,12 @@ export default class WirelessApi {
 	constructor(instance) {
 		this.instance = instance
 
-		this.charger  = {
+		this.charger = {
 			model: '',
 			firmwareVersion: '',
 			deviceId: '',
-			flash: "OFF",
-			storage_mode: 'OFF'
+			flash: 'OFF',
+			storage_mode: 'OFF',
 		}
 
 		this.modules = []
@@ -57,7 +57,7 @@ export default class WirelessApi {
 				temperatureF: 255,
 				health: 255,
 				bars: 255,
-				error: BayError["255"]
+				error: BayError['255'],
 			}
 		}
 
@@ -82,7 +82,6 @@ export default class WirelessApi {
 		return this.modules[id]
 	}
 
-
 	/**
 	 * Returns the charger state object.
 	 *
@@ -90,10 +89,9 @@ export default class WirelessApi {
 	 * @access public
 	 * @since 1.0.0
 	 */
-	getCharger () {
+	getCharger() {
 		return this.charger
 	}
-
 
 	/**
 	 * Update a bay property.
@@ -113,75 +111,74 @@ export default class WirelessApi {
 		}
 
 		if (key === 'BATT_TIME_TO_FULL') {
-			bay.time_to_full = Number.parseInt(value);
-			let time_to_full_string = bay.time_to_full.toString();
+			bay.time_to_full = Number.parseInt(value)
+			let time_to_full_string = bay.time_to_full.toString()
 			switch (bay.time_to_full) {
 				case 65535:
-					time_to_full_string = 'Unknown';
-					break;
-				case 65534: 
-					time_to_full_string = 'Error';
-					break;
-				case 65533:	
-					time_to_full_string = 'Calculating...';
-					break;
+					time_to_full_string = 'Unknown'
+					break
+				case 65534:
+					time_to_full_string = 'Error'
+					break
+				case 65533:
+					time_to_full_string = 'Calculating...'
+					break
 				case 65529:
-					time_to_full_string = 'Target reached!';
-					break;
+					time_to_full_string = 'Target reached!'
+					break
 			}
 			this.instance.setVariableValues({ [`${prefix}time_to_full`]: bay.time_to_full })
 			this.instance.setVariableValues({ [`${prefix}time_to_full_string`]: time_to_full_string })
 			this.instance.checkFeedbacks(`bay_time_to_full`)
-		}else if (key === 'BATT_DETECTED') {
+		} else if (key === 'BATT_DETECTED') {
 			bay.detected = value === 'YES'
 			this.instance.setVariableValues({ [`${prefix}detected`]: bay.detected })
 			this.instance.checkFeedbacks(`bay_detected`)
-		}else if (key === 'BATT_STATE') {
+		} else if (key === 'BATT_STATE') {
 			bay.state = BAYState[value]
 			this.instance.setVariableValues({ [`${prefix}state`]: bay.state })
 			this.instance.checkFeedbacks(`bay_state`)
-		}else if (key === 'BATT_CYCLE') {
-			bay.cycleCount = Number.parseInt(value);
+		} else if (key === 'BATT_CYCLE') {
+			bay.cycleCount = Number.parseInt(value)
 			this.instance.setVariableValues({ [`${prefix}cycle_count`]: bay.cycleCount })
 			this.instance.checkFeedbacks(`bay_cycle_count`)
-		}else if (key === 'BATT_CHARGE') {
-			bay.charge = Number.parseInt(value);
-			this.instance.setVariableValues({[`${prefix}charge`]: bay.charge})
+		} else if (key === 'BATT_CHARGE') {
+			bay.charge = Number.parseInt(value)
+			this.instance.setVariableValues({ [`${prefix}charge`]: bay.charge })
 			this.instance.checkFeedbacks(`bay_charge`)
-		}else if (key === 'BATT_HEALTH') {
-			bay.health = Number.parseInt(value);
-			this.instance.setVariableValues({[`${prefix}health`]: bay.health})
+		} else if (key === 'BATT_HEALTH') {
+			bay.health = Number.parseInt(value)
+			this.instance.setVariableValues({ [`${prefix}health`]: bay.health })
 			this.instance.checkFeedbacks(`bay_health`)
-		}else if (key === 'BATT_BARS') {
-			bay.bars = Number.parseInt(value);
-			this.instance.setVariableValues({[`${prefix}bars`]: bay.bars})
+		} else if (key === 'BATT_BARS') {
+			bay.bars = Number.parseInt(value)
+			this.instance.setVariableValues({ [`${prefix}bars`]: bay.bars })
 			this.instance.checkFeedbacks(`bay_bars`)
-		}else if (key === 'BATT_TEMP_C') {
-			bay.temperatureC = Number.parseInt(value);
+		} else if (key === 'BATT_TEMP_C') {
+			bay.temperatureC = Number.parseInt(value)
 			this.instance.setVariableValues({ [`${prefix}temperature_c`]: bay.temperatureC })
 			this.instance.checkFeedbacks(`bay_temperature_c`)
-		}else if (key === 'BATT_TEMP_F') {
-			bay.temperatureF = Number.parseInt(value);
+		} else if (key === 'BATT_TEMP_F') {
+			bay.temperatureF = Number.parseInt(value)
 			this.instance.setVariableValues({ [`${prefix}temperature_f`]: bay.temperatureF })
 			this.instance.checkFeedbacks(`bay_temperature_f`)
-		}else if (key === 'BATT_CAPACITY_MAX') {
-			bay.capacityMAX = Number.parseInt(value);
+		} else if (key === 'BATT_CAPACITY_MAX') {
+			bay.capacityMAX = Number.parseInt(value)
 			this.instance.setVariableValues({ [`${prefix}capacity_max`]: bay.capacityMAX })
 			this.instance.checkFeedbacks(`bay_capacity_max`)
-		}else if (key === 'BATT_CURRENT_CAPACITY') {
-			bay.currentCapacity = Number.parseInt(value);
+		} else if (key === 'BATT_CURRENT_CAPACITY') {
+			bay.currentCapacity = Number.parseInt(value)
 			this.instance.setVariableValues({ [`${prefix}current_capacity`]: bay.currentCapacity })
 			this.instance.checkFeedbacks(`bay_current_capacity`)
-		}else if (key === 'BATT_CURRENT_CAPACITY_MAX') {
-			bay.currentCapacityMAX = Number.parseInt(value);
+		} else if (key === 'BATT_CURRENT_CAPACITY_MAX') {
+			bay.currentCapacityMAX = Number.parseInt(value)
 			this.instance.setVariableValues({ [`${prefix}current_capacity_max`]: bay.currentCapacityMAX })
 			this.instance.checkFeedbacks(`bay_current_capacity_max`)
-		}else if (key === 'BATT_ERROR') {
+		} else if (key === 'BATT_ERROR') {
 			bay.error = BayError[value] || value
 			this.instance.setVariableValues({ [`${prefix}error`]: bay.error })
 			this.instance.checkFeedbacks(`bay_error`)
 		}
-
 	}
 
 	/**
@@ -199,20 +196,20 @@ export default class WirelessApi {
 
 		if (key === 'MODEL') {
 			this.charger.model = value.replace('{', '').replace('}', '').trim()
-			this.instance.setVariableValues({device_model: this.charger.model})
+			this.instance.setVariableValues({ device_model: this.charger.model })
 		} else if (key === 'FW_VER') {
 			this.charger.firmwareVersion = value.replace('{', '').replace('}', '').trim()
-			this.instance.setVariableValues({firmware_version: this.charger.firmwareVersion})
+			this.instance.setVariableValues({ firmware_version: this.charger.firmwareVersion })
 		} else if (key === 'DEVICE_ID') {
 			this.charger.deviceId = value.replace('{', '').replace('}', '').trim()
-			this.instance.setVariableValues({deviceId: this.charger.deviceId})
+			this.instance.setVariableValues({ deviceId: this.charger.deviceId })
 		} else if (key === 'FLASH') {
 			this.charger.flash = value === 'ON'
-			this.instance.setVariableValues({flash: this.charger.flash})
+			this.instance.setVariableValues({ flash: this.charger.flash })
 		} else if (key === 'STORAGE_MODE') {
 			this.charger.storage_mode = value === 'ON'
 
-			this.instance.setVariableValues({storage_mode: this.charger.storage_mode})
+			this.instance.setVariableValues({ storage_mode: this.charger.storage_mode })
 			this.instance.checkFeedbacks('storage_mode')
 		}
 	}
@@ -235,7 +232,7 @@ export default class WirelessApi {
 
 		if (key === 'BATT_MODULE_TYPE') {
 			module.type = ModuleType[value]
-			this.instance.setVariableValues({ [`${prefix}type`]: module.type})
+			this.instance.setVariableValues({ [`${prefix}type`]: module.type })
 			this.instance.updateActions()
 			this.instance.updateFeedbacks()
 		}

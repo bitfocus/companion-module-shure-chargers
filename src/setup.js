@@ -16,14 +16,11 @@ function CreateModelChoices() {
 	return choices
 }
 
-
 export const Models = {
-	sbc220: { id: 'sbc220', label: 'SBC220 AD', bays: 2, modules:4, modular: true },
+	sbc220: { id: 'sbc220', label: 'SBC220 AD', bays: 2, modules: 4, modular: true },
 	sbc240: { id: 'sbc240', label: 'SBC240 ADX', bays: 2, modules: 4, modular: true },
 	sbrc: { id: 'sbrc', label: 'SBRC Rack Charger', bays: 8, modules: 4, modular: false },
 }
-
-
 
 export const BAYState = {
 	FULL: 'FULL',
@@ -40,30 +37,30 @@ export const BAYState = {
 	DISCHARGING_WARM: 'DISCHARGING_WARM',
 	DISCHARGING_COLD: 'DISCHARGING_COLD',
 	ERROR: 'ERROR',
-	NO_BATT: 'NO_BATT'
+	NO_BATT: 'NO_BATT',
 }
 
 export const BayError = {
-	'000' : "No Active Error",
-	'001' : "Unknown Module",
-	'002' : "Unrecognized Battery",
-	'003' : "Deep Discharge Recovery Failed",
-	'004' : "Charge Failed",
-	'005' : "Check Battery",
-	'006' : "Check Charger",
-	'007' : "Communication Failure",
-	'255' : "No Data"
+	'000': 'No Active Error',
+	'001': 'Unknown Module',
+	'002': 'Unrecognized Battery',
+	'003': 'Deep Discharge Recovery Failed',
+	'004': 'Charge Failed',
+	'005': 'Check Battery',
+	'006': 'Check Charger',
+	'007': 'Communication Failure',
+	255: 'No Data',
 }
 
 export const ModuleType = {
-	'000' : "No module installed",
-	'001' : "AXT902",
-	'002' : "AXT901",
-	'003' : "SBC-AX (For SB900x)",
-	'004' : "SBM920",
-	'005' : "SBM910",
-	'006' : "SBM910M",
-	'255' : "Invalid / Unsupported module"
+	'000': 'No module installed',
+	'001': 'AXT902',
+	'002': 'AXT901',
+	'003': 'SBC-AX (For SB900x)',
+	'004': 'SBM920',
+	'005': 'SBM910',
+	'006': 'SBM910M',
+	255: 'Invalid / Unsupported module',
 }
 
 export function CreateModuleCountCoices() {
@@ -73,7 +70,7 @@ export function CreateModuleCountCoices() {
 		choices.push({ id: i, label: i.toString() })
 	}
 
-	return choices;
+	return choices
 }
 
 export const Choices = {
