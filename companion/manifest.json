@@ -1,0 +1,26 @@
+{
+	"id": "shure-charger",
+	"name": "shure-charger",
+	"shortname": "shure-charger",
+	"description": "",
+	"version": "0.1.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-shure-charger.git",
+	"bugs": "https://github.com/bitfocus/companion-module-shure-charger/issues",
+	"maintainers": [
+		{
+			"name": "Alexander Kettner",
+			"email": "alexander.kettner1999@gmail.com"
+		}
+	],
+	"legacyIds": [],
+	"runtime": {
+		"type": "node18",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../src/index.js"
+	},
+	"manufacturer": "Shure",
+	"products": ["SBRC", "SB-220", "SB-240"],
+	"keywords": ["Rack Charger", "Battery Charger", "Charger"]
+}
