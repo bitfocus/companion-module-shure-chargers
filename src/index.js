@@ -1,5 +1,4 @@
 import {
-	CreateConvertToBooleanFeedbackUpgradeScript,
 	InstanceBase,
 	InstanceStatus,
 	Regex,
@@ -10,7 +9,6 @@ import { updateActions } from './actions.js'
 import { updateFeedbacks } from './feedback.js'
 import { updateVariables } from './variables.js'
 import WirelessApi from './internalAPI.js'
-import { BooleanFeedbackUpgradeMap } from './upgrades.js'
 import { Choices, Models } from './setup.js'
 
 /**
@@ -312,35 +310,6 @@ class ShureWirelessInstance extends InstanceBase {
 	}
 
 	/**
-	 * INTERNAL: use model data to define the bay and slot choicess.
-	 *
-	 * @access protected
-	 * @since 1.0.0
-	 */
-	setupBAYChoices() {
-		this.CHOICES_BAYS = []
-		this.CHOICES_BAYS_A = []
-
-		if (8 > 1) {
-			this.CHOICES_BAYS_A.push({ id: '0', label: 'All Bays' })
-		}
-
-		for (let i = 1; i <= 8; i++) {
-			let data = `Bay ${i}`
-
-			if (this.api.getBay(i).name !== '') {
-				data += ' (' + this.api.getBay(i).name + ')'
-			}
-
-			this.CHOICES_BAYS.push({ id: i, label: data })
-			this.CHOICES_BAYS_A.push({ id: i, label: data })
-		}
-
-		this.BAYS_FIELD.choices = this.CHOICES_BAYS
-		this.BAYS_A_FIELD.choices = this.CHOICES_BAYS_A
-	}
-
-	/**
 	 * Set up the fields used in actions and feedbacks
 	 *
 	 * @access protected
@@ -364,4 +333,4 @@ class ShureWirelessInstance extends InstanceBase {
 	}
 }
 
-runEntrypoint(ShureWirelessInstance, [CreateConvertToBooleanFeedbackUpgradeScript(BooleanFeedbackUpgradeMap)])
+runEntrypoint(ShureWirelessInstance, [])

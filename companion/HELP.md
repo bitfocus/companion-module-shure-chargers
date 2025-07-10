@@ -1,4 +1,4 @@
-## Shure Charger
+## Shure Chargers
 
 - Shure SBRC
 - Shure SBC240
