@@ -17,8 +17,11 @@ function CreateModelChoices() {
 }
 
 export const Models = {
+	// Modular here primarily refers to whether chargers can use a shared network connection,
+	// although is also overloaded to say whether they've got inserts for different types of batteries like the SBRC
 	sbc220: { id: 'sbc220', label: 'SBC220 AD', bays: 2, modules: 4, modular: true },
 	sbc240: { id: 'sbc240', label: 'SBC240 ADX', bays: 2, modules: 4, modular: true },
+	sbc441: { id: 'sbc441', label: 'SBC441 ADXR', bays: 4, modules: 4, modular: true },
 	sbrc: { id: 'sbrc', label: 'SBRC Rack Charger', bays: 8, modules: 4, modular: false },
 }
 
