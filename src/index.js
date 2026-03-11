@@ -172,9 +172,6 @@ class ShureWirelessInstance extends InstanceBase {
 		this.model = {}
 		this.initDone = false
 
-		this.CHOICES_BAYS = []
-		this.CHOICES_BAYS_A = []
-
 		if (this.config.modelID !== undefined) {
 			this.model = Models[this.config.modelID]
 		} else {
@@ -185,8 +182,6 @@ class ShureWirelessInstance extends InstanceBase {
 		this.updateStatus(InstanceStatus.Disconnected, 'Connecting')
 
 		this.api = new WirelessApi(this)
-
-		this.setupFields()
 
 		this.updateActions()
 		this.updateVariables()
@@ -306,29 +301,6 @@ class ShureWirelessInstance extends InstanceBase {
 			} else {
 				this.log('debug', 'Socket not connected :(')
 			}
-		}
-	}
-
-	/**
-	 * Set up the fields used in actions and feedbacks
-	 *
-	 * @access protected
-	 * @since 1.1.0
-	 */
-	setupFields() {
-		this.BAYS_FIELD = {
-			type: 'dropdown',
-			label: 'Bay',
-			id: 'bay',
-			default: '1',
-			choices: this.CHOICES_BAYS,
-		}
-		this.BAYS_A_FIELD = {
-			type: 'dropdown',
-			label: 'Bay',
-			id: 'bay',
-			default: '1',
-			choices: this.CHOICES_BAYS_A,
 		}
 	}
 }
