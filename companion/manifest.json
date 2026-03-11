@@ -21,6 +21,6 @@
 		"entrypoint": "../src/index.js"
 	},
 	"manufacturer": "Shure",
-	"products": ["SBRC", "SB-220", "SB-240"],
+	"products": ["SBRC", "SB220", "SB240", "SB441"],
 	"keywords": ["Rack Charger", "Battery Charger", "Charger", "Chargers"]
 }
