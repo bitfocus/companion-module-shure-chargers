@@ -154,7 +154,7 @@ class ShureWirelessInstance extends InstanceBase {
 				label: 'Number of Modules',
 				choices: Choices.ModuleCount,
 				default: 1,
-				isVisible: (options) => options['modelID'] !== 'sbrc',
+				isVisible: (options) => ((options['modelID'] !== 'sbrc') && (options['modelID'] !== 'sbc441')),
 			},
 		]
 	}
