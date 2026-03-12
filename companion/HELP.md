@@ -3,6 +3,7 @@
 - Shure SBRC
 - Shure SBC240
 - Shure SBC220
+- Shure SBC441
 
 ### Available actions
 
