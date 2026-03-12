@@ -63,8 +63,11 @@ export const ModuleType = {
 	'004': 'SBM920',
 	'005': 'SBM910',
 	'006': 'SBM910M',
+	129: 'Primary',
+	133: 'Secondary OR Primary',
 	255: 'Invalid / Unsupported module',
 }
+
 
 export function CreateModuleCountCoices() {
 	let choices = []

@@ -9,12 +9,14 @@ import { Models } from './setup.js'
 export function updateVariables() {
 	let variables = []
 
-	if (!this.model.modular) {
-		this.log('debug', 'Charger is not modular, setting variables for single module')
-		variables.push({ variableId: `module_1_type`, name: `Module 1 Type` })
-		variables.push({ variableId: `module_2_type`, name: `Module 2 Type` })
-		variables.push({ variableId: `module_3_type`, name: `Module 3 Type` })
-		variables.push({ variableId: `module_4_type`, name: `Module 4 Type` })
+	let countM = this.config.moduleCount;
+
+	if (this.config.modelID === 'sbrc') {
+		countM = 4;
+	}
+
+	for (let i = 1; i <= countM; i++) {
+		variables.push({ variableId: `module_${i}_type`, name: `Module ${i} Type` })
 	}
 
 	const moduleCount = this.model.modular
