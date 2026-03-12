@@ -155,11 +155,11 @@ export default class WirelessApi {
 			this.instance.setVariableValues({ [`${prefix}bars`]: bay.bars })
 			this.instance.checkFeedbacks(`bay_bars`)
 		} else if (key === 'BATT_TEMP_C') {
-			bay.temperatureC = Number.parseInt(value)
+			bay.temperatureC = this.formatTemperature(Number.parseInt(value));
 			this.instance.setVariableValues({ [`${prefix}temperature_c`]: bay.temperatureC })
 			this.instance.checkFeedbacks(`bay_temperature_c`)
 		} else if (key === 'BATT_TEMP_F') {
-			bay.temperatureF = Number.parseInt(value)
+			bay.temperatureF = this.formatTemperature(Number.parseInt(value))
 			this.instance.setVariableValues({ [`${prefix}temperature_f`]: bay.temperatureF })
 			this.instance.checkFeedbacks(`bay_temperature_f`)
 		} else if (key === 'BATT_CAPACITY_MAX') {
@@ -236,5 +236,11 @@ export default class WirelessApi {
 			this.instance.updateActions()
 			this.instance.updateFeedbacks()
 		}
+	}
+
+	formatTemperature(tempValue) {
+		if (tempValue > 253) return tempValue;
+
+		return tempValue - 40;
 	}
 }
