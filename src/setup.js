@@ -17,9 +17,12 @@ function CreateModelChoices() {
 }
 
 export const Models = {
+	// Modular here primarily refers to whether chargers can use a shared network connection,
+	// although is also overloaded to say whether they've got inserts for different types of batteries like the SBRC
 	sbc220: { id: 'sbc220', label: 'SBC220 AD', bays: 2, modules: 4, modular: true },
 	sbc240: { id: 'sbc240', label: 'SBC240 ADX', bays: 2, modules: 4, modular: true },
-	sbrc: { id: 'sbrc', label: 'SBRC Rack Charger', bays: 8, modules: 4, modular: false },
+	sbc441: { id: 'sbc441', label: 'SBC441 ADXR', bays: 4, modules: 1, modular: true },
+	sbrc: { id: 'sbrc', label: 'SBRC Rack Charger', bays: 8, modules: 1, modular: false },
 }
 
 export const BAYState = {
@@ -79,7 +82,6 @@ export const Choices = {
 }
 
 export const Regex = {
-	Frequency: '/^(4[7-9][0-9]|[5-8][0-9]{2}|9[0-2][0-9]|93[0-7])\\.\\d(00|25|50|75)$/',
 	Name: '/^.{1,8}$/',
 	DeviceId: '/^[A-Za-z0-9\\s!"#$%&\'()*+,\\-\\.\\/:;<=>?@\\[\\\\\\]^_`~]{1,8}$/',
 }
