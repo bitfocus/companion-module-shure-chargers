@@ -1,8 +1,8 @@
 import { BayError, BAYState, ModuleType } from './setup.js'
 
 /**
- * Companion instance API class for Shure SBRC.
- * Utilized to track the state of the receiver and channels.
+ * Companion instance API class for Shure chargers.
+ * Utilized to track the state of the chargers and batteries.
  *
  * @version 1.0.0
  * @since 1.0.0
