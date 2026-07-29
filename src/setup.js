@@ -69,7 +69,6 @@ export const ModuleType = {
 	255: 'Invalid / Unsupported module',
 }
 
-
 export function CreateModuleCountCoices() {
 	let choices = []
 

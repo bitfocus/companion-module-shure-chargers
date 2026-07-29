@@ -9,10 +9,10 @@ import { Models } from './setup.js'
 export function updateVariables() {
 	let variables = []
 
-	let countM = this.config.moduleCount;
+	let countM = this.config.moduleCount
 
 	if (this.config.modelID === 'sbrc') {
-		countM = 4;
+		countM = 4
 	}
 
 	for (let i = 1; i <= countM; i++) {

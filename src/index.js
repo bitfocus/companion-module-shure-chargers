@@ -1,10 +1,4 @@
-import {
-	InstanceBase,
-	InstanceStatus,
-	Regex,
-	runEntrypoint,
-	TCPHelper,
-} from '@companion-module/base'
+import { InstanceBase, InstanceStatus, Regex, runEntrypoint, TCPHelper } from '@companion-module/base'
 import { updateActions } from './actions.js'
 import { updateFeedbacks } from './feedback.js'
 import { updateVariables } from './variables.js'
@@ -154,7 +148,8 @@ class ShureWirelessInstance extends InstanceBase {
 				label: 'Number of Modules',
 				choices: Choices.ModuleCount,
 				default: 1,
-				isVisible: (options) => ((options['modelID'] !== 'sbrc') && (options['modelID'] !== 'sbc441') && (options['modelID'] !== 'sbc840m')),
+				isVisible: (options) =>
+					options['modelID'] !== 'sbrc' && options['modelID'] !== 'sbc441' && options['modelID'] !== 'sbc840m',
 			},
 		]
 	}

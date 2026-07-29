@@ -155,7 +155,7 @@ export default class WirelessApi {
 			this.instance.setVariableValues({ [`${prefix}bars`]: bay.bars })
 			this.instance.checkFeedbacks(`bay_bars`)
 		} else if (key === 'BATT_TEMP_C') {
-			bay.temperatureC = this.formatTemperature(Number.parseInt(value));
+			bay.temperatureC = this.formatTemperature(Number.parseInt(value))
 			this.instance.setVariableValues({ [`${prefix}temperature_c`]: bay.temperatureC })
 			this.instance.checkFeedbacks(`bay_temperature_c`)
 		} else if (key === 'BATT_TEMP_F') {
@@ -239,8 +239,8 @@ export default class WirelessApi {
 	}
 
 	formatTemperature(tempValue) {
-		if (tempValue > 253) return tempValue;
+		if (tempValue > 253) return tempValue
 
-		return tempValue - 40;
+		return tempValue - 40
 	}
 }
