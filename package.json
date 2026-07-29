@@ -13,8 +13,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@companion-module/base": "^1.8.0",
-		"pngjs": "~6.0.0"
+		"@companion-module/base": "^1.8.0"
 	},
 	"devDependencies": {
 		"@companion-module/tools": "^1.5.2",
