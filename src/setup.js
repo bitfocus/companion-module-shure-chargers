@@ -22,6 +22,7 @@ export const Models = {
 	sbc220: { id: 'sbc220', label: 'SBC220 AD', bays: 2, modules: 4, modular: true },
 	sbc240: { id: 'sbc240', label: 'SBC240 ADX', bays: 2, modules: 4, modular: true },
 	sbc441: { id: 'sbc441', label: 'SBC441 ADXR', bays: 4, modules: 1, modular: true },
+	sbc840m: { id: 'sbc840m', label: 'SBC840M ADX', bays: 8, modules: 1, modular: false },
 	sbrc: { id: 'sbrc', label: 'SBRC Rack Charger', bays: 8, modules: 1, modular: false },
 }
 

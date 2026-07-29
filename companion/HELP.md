@@ -4,6 +4,7 @@
 - Shure SBC240
 - Shure SBC220
 - Shure SBC441
+- Shure SBC840M
 
 ### Available actions
 
