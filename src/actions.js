@@ -39,7 +39,7 @@ export function updateActions() {
 		name: 'Device Reboot',
 		callback: async (event, context) => {
 			this.sendCommand(`SET REBOOT`, {})
-		}
+		},
 	}
 
 	this.setActionDefinitions(actions)
