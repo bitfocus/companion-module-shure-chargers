@@ -36,7 +36,7 @@ export function updateVariables() {
 		variables.push({ variableId: `${prefix}_temperature_f`, name: `Battery temperature in F bay ${i}` })
 		variables.push({ variableId: `${prefix}_capacity_max`, name: `Battery capacity max bay ${i}` })
 		variables.push({ variableId: `${prefix}_current_capacity`, name: `Battery current capacity bay ${i}` })
-		variables.push({ variableId: `${prefix}_current_capacity_max`, name: `Battery current capacity max bars bay ${i}` })
+		variables.push({ variableId: `${prefix}_current_capacity_max`, name: `Battery current capacity max bay ${i}` })
 		variables.push({ variableId: `${prefix}_bars`, name: `Battery bars bay ${i}` })
 		variables.push({ variableId: `${prefix}_error`, name: `Battery error bay ${i}` })
 	}
