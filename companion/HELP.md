@@ -6,6 +6,12 @@
 - Shure SBC441
 - Shure SBC840M
 
+### SBC441 bay count
+
+SBC441 exposes four charging bays per connection. Its bay variables and feedback
+choices do not use the saved Number of Modules setting from a previously selected
+SBC220/SBC240 model. Existing `bay_1` through `bay_4` variable IDs are unchanged.
+
 ### Available actions
 
 | Title                                              | Model Support |
