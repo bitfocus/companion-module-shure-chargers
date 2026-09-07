@@ -28,14 +28,14 @@ export function updateFeedbacks() {
 	feedbacks['flash'] = {
 		type: 'boolean',
 		name: 'Flash Active',
-		description: '',
+		description: 'Last reported device flash state',
 		defaultStyle: {
 			color: combineRgb(0, 0, 0),
 			bgcolor: combineRgb(0, 255, 0),
 		},
 		options: [],
-		callback: ({ options }) => {
-			return !!this.api.getBay(options.bay).flash
+		callback: () => {
+			return this.api.getCharger().flash
 		},
 	}
 

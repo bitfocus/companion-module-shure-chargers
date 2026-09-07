@@ -26,6 +26,17 @@
 | Bay Error             | Current error of the charging bay                 | All           |
 | Battery Charge Equals | If the battery charge is equal to the given value | All           |
 
+#### Charger state feedbacks
+
+Flash and Storage Mode use device-level reports, not individual battery bays.
+Both feedbacks are inactive until a report updates their state.
+
+Flash reflects the last `FLASH` report received; it is not a timer or a measurement
+of the physical LEDs. For example, the SBRC command guide documents `REP FLASH ON`
+and says the device stops identifying automatically, but does not document an
+automatic `OFF` report. This module does not invent an expiry time or send extra
+commands to determine when identification ends.
+
 #### Time To Full Value Table
 
     Numeric, five characters
