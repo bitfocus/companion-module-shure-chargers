@@ -24,8 +24,8 @@ export default class WirelessApi {
 			model: '',
 			firmwareVersion: '',
 			deviceId: '',
-			flash: 'OFF',
-			storage_mode: 'OFF',
+			flash: false,
+			storage_mode: false,
 		}
 
 		this.modules = []
@@ -206,6 +206,7 @@ export default class WirelessApi {
 		} else if (key === 'FLASH') {
 			this.charger.flash = value === 'ON'
 			this.instance.setVariableValues({ flash: this.charger.flash })
+			this.instance.checkFeedbacks('flash')
 		} else if (key === 'STORAGE_MODE') {
 			this.charger.storage_mode = value === 'ON'
 
